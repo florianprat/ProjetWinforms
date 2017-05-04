@@ -95,7 +95,7 @@
             this.dgvVersions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVersions.Location = new System.Drawing.Point(12, 327);
             this.dgvVersions.Name = "dgvVersions";
-            this.dgvVersions.Size = new System.Drawing.Size(219, 105);
+            this.dgvVersions.Size = new System.Drawing.Size(232, 143);
             this.dgvVersions.TabIndex = 3;
             // 
             // label4
@@ -103,7 +103,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(290, 299);
+            this.label4.Location = new System.Drawing.Point(290, 329);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(220, 14);
             this.label4.TabIndex = 2;
@@ -112,7 +112,7 @@
             // btnPlus
             // 
             this.btnPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlus.Location = new System.Drawing.Point(329, 327);
+            this.btnPlus.Location = new System.Drawing.Point(329, 357);
             this.btnPlus.Name = "btnPlus";
             this.btnPlus.Size = new System.Drawing.Size(46, 37);
             this.btnPlus.TabIndex = 4;
@@ -122,7 +122,7 @@
             // btnMoins
             // 
             this.btnMoins.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMoins.Location = new System.Drawing.Point(390, 327);
+            this.btnMoins.Location = new System.Drawing.Point(390, 357);
             this.btnMoins.Name = "btnMoins";
             this.btnMoins.Size = new System.Drawing.Size(46, 37);
             this.btnMoins.TabIndex = 4;
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 454);
+            this.ClientSize = new System.Drawing.Size(595, 524);
             this.Controls.Add(this.btnMoins);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.dgvVersions);

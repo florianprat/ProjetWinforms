@@ -20,6 +20,7 @@ namespace JobOverview
             // Branchements des contrôles
             cmbLogiciels.SelectedIndexChanged += CmbLogiciels_SelectedIndexChanged;  // Sélection dans la liste déroulante
             btnPlus.Click += BtnPlus_Click;                                          // Clic sur le bouton "Plus"
+            btnMoins.Click += BtnMoins_Click;                                        // Clic sur le bouton "Moins"
         }
 
         // Instructions exécutées à l'ouverture de la fenêtre
@@ -33,6 +34,7 @@ namespace JobOverview
             cmbLogiciels.DataSource = _listLogAvecModules.OrderBy(l => l.Nom).ToList();
             cmbLogiciels.ValueMember = "Code";
             cmbLogiciels.DisplayMember = "Nom";
+            cmbLogiciels.SelectedValue = string.Empty;   // Permet de ne rien afficher dans la liste déroulante.
 
             // Permet de vider les DataGridView sinon les infos concernant le premier item de la liste déoulante logiciel s'affiche
             dgvModules.DataSource = null;
@@ -51,6 +53,7 @@ namespace JobOverview
 
             // Affichage des versions (les colonnes inutiles sont masquées).
             dgvVersions.DataSource = _listLogAvecVersions.Select(l => l.listVersions).FirstOrDefault().OrderBy(v => v.Num).ToList();
+            dgvVersions.Columns["CodeLog"].Visible = false;
             dgvVersions.Columns["Millesime"].Visible = false;
             dgvVersions.Columns["DateOuverture"].Visible = false;
             dgvVersions.Columns["DateSortiePrévue"].Visible = false;
@@ -58,7 +61,7 @@ namespace JobOverview
         }
 
         // Clic sur le bouton "Plus"
-        // Permet l'ouverture de la fenêtre modale FormSaisieVersions
+        // Permet l'ouverture de la fenêtre modale FormSaisieVersions et d'ajouter une version à la base de données.
         private void BtnPlus_Click(object sender, EventArgs e)
         {
             // Création et ouverture d'une fenêtre modale de saisie de versions
@@ -68,12 +71,23 @@ namespace JobOverview
                 // On ouvre la fenêtre de saisie et on récupère le résultat OK ou annuler de la fenêtre.
                 DialogResult dr = form.ShowDialog();
 
-                if(dr == DialogResult.OK)
+                if (dr == DialogResult.OK)
                 {
-                    form.versionSaisie.CodeLog =(string)cmbLogiciels.SelectedValue;
+                    form.versionSaisie.CodeLog = (string)cmbLogiciels.SelectedValue;
                     DALLogiciels.AjouterVersion(form.versionSaisie);
                 }
             }
+        }
+
+        // Clic sur le bouton "Moins"
+        // Permet de supprimer une version de la base de données.
+        private void BtnMoins_Click(object sender, EventArgs e)
+        {
+            // On récupère le numéro de la version à supprimer et le code du logiciel associé
+            float numVersionASupprimer = ((Version)dgvVersions.CurrentRow.DataBoundItem).Num;
+            string codeLog = (string)cmbLogiciels.SelectedValue;
+
+            DALLogiciels.SupprimerVersion(numVersionASupprimer, codeLog);
         }
     }
 }

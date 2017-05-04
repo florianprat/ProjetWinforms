@@ -198,5 +198,33 @@ namespace JobOverview
                 command.ExecuteNonQuery();
             }
         }
+
+        // Suppression d'une version dans la base de données
+        public static void SupprimerVersion(float numVersion, string codeLog)
+        {
+            // Récupération de la chaîne de connexion
+            var connectString = Properties.Settings.Default.JobOverviewConnectionString;
+
+            //Ecriture de la requête
+            string req = @"delete jo.Version where NumeroVersion = @Num and CodeLogiciel = @CodeLog";
+
+            // Paramètres de la requête
+            var paramNum = new SqlParameter("@Num", DbType.Double);
+            paramNum.Value = numVersion;
+            var paramCodeLog = new SqlParameter("@CodeLog", DbType.String);
+            paramCodeLog.Value = codeLog;
+
+            using (var connect = new SqlConnection(connectString))
+            {
+                // Création de la commande avec paramètres
+                var command = new SqlCommand(req, connect);
+                command.Parameters.Add(paramNum);
+                command.Parameters.Add(paramCodeLog);
+
+                // Ouverture de la connexion et exécution de la commande
+                connect.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
