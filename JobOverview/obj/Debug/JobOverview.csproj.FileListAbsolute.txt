@@ -1,0 +1,2 @@
+D:\ProjetWinforms\JobOverview\bin\Debug\JobOverview.exe.config
+D:\ProjetWinforms\ProjetWinforms\JobOverview\bin\Debug\JobOverview.exe.config
