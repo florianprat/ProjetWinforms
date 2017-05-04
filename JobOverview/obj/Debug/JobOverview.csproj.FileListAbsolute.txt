@@ -1,2 +1,11 @@
 D:\ProjetWinforms\JobOverview\bin\Debug\JobOverview.exe.config
 D:\ProjetWinforms\ProjetWinforms\JobOverview\bin\Debug\JobOverview.exe.config
+D:\ProjetWinforms\ProjetWinforms\JobOverview\bin\Debug\JobOverview.exe
+D:\ProjetWinforms\ProjetWinforms\JobOverview\bin\Debug\JobOverview.pdb
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.csprojResolveAssemblyReference.cache
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.FormLogiciels.resources
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.MDIForm.resources
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.Properties.Resources.resources
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.csproj.GenerateResource.Cache
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.exe
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.pdb

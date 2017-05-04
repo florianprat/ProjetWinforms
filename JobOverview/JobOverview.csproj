@@ -45,14 +45,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALLogiciels.cs" />
+    <Compile Include="FormLogiciels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogiciels.Designer.cs">
+      <DependentUpon>FormLogiciels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobOverviewDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobOverviewDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Logiciel.cs" />
     <Compile Include="MDIForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MDIForm.Designer.cs">
       <DependentUpon>MDIForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Module.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Release.cs" />
+    <Compile Include="Version.cs" />
+    <EmbeddedResource Include="FormLogiciels.resx">
+      <DependentUpon>FormLogiciels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIForm.resx">
       <DependentUpon>MDIForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,6 +84,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="JobOverviewDataSet.xsc">
+      <DependentUpon>JobOverviewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="JobOverviewDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JobOverviewDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="JobOverviewDataSet.xss">
+      <DependentUpon>JobOverviewDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
