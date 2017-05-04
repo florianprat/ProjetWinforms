@@ -36,6 +36,7 @@
             this.dgvVersions = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPlus = new System.Windows.Forms.Button();
+            this.btnMoins = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVersions)).BeginInit();
             this.SuspendLayout();
@@ -118,11 +119,22 @@
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
             // 
+            // btnMoins
+            // 
+            this.btnMoins.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoins.Location = new System.Drawing.Point(390, 327);
+            this.btnMoins.Name = "btnMoins";
+            this.btnMoins.Size = new System.Drawing.Size(46, 37);
+            this.btnMoins.TabIndex = 4;
+            this.btnMoins.Text = "-";
+            this.btnMoins.UseVisualStyleBackColor = true;
+            // 
             // FormLogiciels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 454);
+            this.Controls.Add(this.btnMoins);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.dgvVersions);
             this.Controls.Add(this.label4);
@@ -150,5 +162,6 @@
         private System.Windows.Forms.DataGridView dgvVersions;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.Button btnMoins;
     }
 }

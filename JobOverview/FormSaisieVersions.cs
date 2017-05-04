@@ -19,9 +19,8 @@ namespace JobOverview
         {
             InitializeComponent();
 
-            // Les instructions suivantes permettent d'assigner les champs de date de versionSaisie seulement
-            // si l'utilisateur choisit une date.
-            // Sinon la date d'aujourd'hui est assignée.
+            // Ce qui suit permet d'assigner les champs de date de versionSaisie seulement si l'utilisateur choisit une date.
+            // Sinon les DateTimePickers assignent la date qu'ils affichent.
             dtpDateOuverture.ValueChanged += (object sender, EventArgs e) => versionSaisie.DateOuverture = dtpDateOuverture.Value;
             dtpDateSortiePrévue.ValueChanged += (object sender, EventArgs e) => versionSaisie.DateSortiePrévue = dtpDateSortiePrévue.Value;
             dtpDateSortieRéelle.ValueChanged += (object sender, EventArgs e) => versionSaisie.DateSortieRéelle = dtpDateSortieRéelle.Value;

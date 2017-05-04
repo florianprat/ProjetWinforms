@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -100,10 +101,10 @@ namespace JobOverview
             //Ecriture de la requête
             string req = @"select L.CodeLogiciel, L.Nom, V.NumeroVersion, max(R.NumeroRelease) [Dernière release]
                             from jo.Logiciel L
-                            inner join jo.Version V on L.CodeLogiciel = V.CodeLogiciel
-                            inner join jo.Release R on R.NumeroVersion = V.NumeroVersion
-                            inner join jo.Filiere F on L.CodeFiliere = F.CodeFiliere
-                            inner join jo.Equipe E on F.CodeFiliere = E.CodeFiliere
+                            left outer join jo.Version V on L.CodeLogiciel = V.CodeLogiciel
+                            left outer join jo.Release R on R.NumeroVersion = V.NumeroVersion
+                            left outer join jo.Filiere F on L.CodeFiliere = F.CodeFiliere
+                            left outer join jo.Equipe E on F.CodeFiliere = E.CodeFiliere
                             where F.CodeFiliere = 'BIOH' and E.CodeEquipe = 'BIOH_DEV'
                             group by L.CodeLogiciel, L.Nom, V.NumeroVersion ";
 
@@ -150,14 +151,52 @@ namespace JobOverview
             // On remplit la liste des versions associée au logiciel courant.
             Version ver = new Version();
             ver.Num = (float)reader["NumeroVersion"];
-            ver.DernièreRelease = (short)reader["Dernière release"];
+            if (reader["Dernière release"] != DBNull.Value)         // Permet de gérer le cas où il n'y a pas de release (arrive quand on crée une version).
+                ver.DernièreRelease = (short)reader["Dernière release"];
             log.listVersions.Add(ver);
         }
 
         // Ajout d'une version dans la base de données
-        //public 
+        public static void AjouterVersion(Version ver)
+        {
+            // Récupération de la chaîne de connexion
+            var connectString = Properties.Settings.Default.JobOverviewConnectionString;
 
+            //Ecriture de la requête
+            string req = @"insert jo.Version (NumeroVersion, CodeLogiciel, Millesime, DateOuverture, DateSortiePrevue, DateSortieReelle)
+                            values (@num, @codeLog, @mille, @dateOuverture, @dateSortiePrévue, @dateSortieRéelle)";
 
+            // Paramètres de la requête
+            var paramNum = new SqlParameter("@num", DbType.Double);
+            paramNum.Value = ver.Num;
+            var paramCodeLog = new SqlParameter("@codeLog", DbType.String);
+            paramCodeLog.Value = ver.CodeLog;
+            var paramMille = new SqlParameter("@mille", DbType.Int16);
+            paramMille.Value = ver.Millesime;
+            var paramDateOuverture = new SqlParameter("@dateOuverture", DbType.DateTime);
+            paramDateOuverture.Value = ver.DateOuverture;
+            var paramDateSortiePrévue = new SqlParameter("@dateSortiePrévue", DbType.DateTime);
+            paramDateSortiePrévue.Value = ver.DateSortiePrévue;
+            var paramDateSortieRéelle = new SqlParameter("@dateSortieRéelle", DbType.DateTime);
+            paramDateSortieRéelle.Value = ver.DateSortieRéelle;
 
+            // Création d'une connexion à partir de la chaîne de connexion stockée juste avant
+            using (var cnx = new SqlConnection(connectString))
+            {
+                // Création d'une commande à partir de la requête et de la connexion
+                // et entrée des paramètres.
+                var command = new SqlCommand(req, cnx);
+                command.Parameters.Add(paramNum);
+                command.Parameters.Add(paramCodeLog);
+                command.Parameters.Add(paramMille);
+                command.Parameters.Add(paramDateOuverture);
+                command.Parameters.Add(paramDateSortiePrévue);
+                command.Parameters.Add(paramDateSortieRéelle);
+
+                // Ouverture de la connection et exécution de la commande
+                cnx.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

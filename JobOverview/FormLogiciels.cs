@@ -29,7 +29,10 @@ namespace JobOverview
             _listLogAvecVersions = DALLogiciels.GetLogicielsAvecVersions();
 
             // Liste déroulante de sélection d'un logiciel (noms des logiciels par ordre alphabétique)
-            cmbLogiciels.DataSource = _listLogAvecModules.OrderBy(l => l.Nom).Select(l => l.Nom).ToList();
+            // cmbLogiciels.DataSource = _listLogAvecModules.OrderBy(l => l.Nom).Select(l => l.Nom).ToList();
+            cmbLogiciels.DataSource = _listLogAvecModules.OrderBy(l => l.Nom).ToList();
+            cmbLogiciels.ValueMember = "Code";
+            cmbLogiciels.DisplayMember = "Nom";
 
             // Permet de vider les DataGridView sinon les infos concernant le premier item de la liste déoulante logiciel s'affiche
             dgvModules.DataSource = null;
@@ -67,9 +70,9 @@ namespace JobOverview
 
                 if(dr == DialogResult.OK)
                 {
-
+                    form.versionSaisie.CodeLog =(string)cmbLogiciels.SelectedValue;
+                    DALLogiciels.AjouterVersion(form.versionSaisie);
                 }
-
             }
         }
     }

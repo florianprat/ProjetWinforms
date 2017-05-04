@@ -141,7 +141,7 @@
             this.dtpDateOuverture.Name = "dtpDateOuverture";
             this.dtpDateOuverture.Size = new System.Drawing.Size(200, 20);
             this.dtpDateOuverture.TabIndex = 8;
-            this.dtpDateOuverture.Value = new System.DateTime(2017, 1, 25, 0, 0, 0, 0);
+            this.dtpDateOuverture.Value = new System.DateTime(2017, 5, 4, 16, 50, 2, 0);
             // 
             // dtpDateSortiePrévue
             // 

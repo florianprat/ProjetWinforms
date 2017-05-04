@@ -11,6 +11,7 @@ namespace JobOverview
     {
         [DisplayName("Numéro")]
         public float Num { get; set; }
+        public string CodeLog { get; set; }
         public short Millesime { get; set; }
         public DateTime DateOuverture { get; set; }
         public DateTime DateSortiePrévue { get; set; }
