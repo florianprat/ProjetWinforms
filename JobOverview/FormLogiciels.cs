@@ -75,6 +75,11 @@ namespace JobOverview
                 {
                     form.versionSaisie.CodeLog = (string)cmbLogiciels.SelectedValue;
                     DALLogiciels.AjouterVersion(form.versionSaisie);
+
+                    // Rafraîchissement de la liste affichée des versions
+                    // Effectuer ce rafraîchissement via une BindingList serait peut-être plus adapté.
+                    _listLogAvecVersions = DALLogiciels.GetLogicielsAvecVersions();
+                    dgvVersions.DataSource = _listLogAvecVersions.Select(l => l.listVersions).FirstOrDefault().OrderBy(v => v.Num).ToList();
                 }
             }
         }
@@ -88,6 +93,11 @@ namespace JobOverview
             string codeLog = (string)cmbLogiciels.SelectedValue;
 
             DALLogiciels.SupprimerVersion(numVersionASupprimer, codeLog);
+
+            // Rafraîchissement de la liste affichée des versions
+            // Effectuer ce rafraîchissement via une BindingList serait peut-être plus adapté.
+            _listLogAvecVersions = DALLogiciels.GetLogicielsAvecVersions();
+            dgvVersions.DataSource = _listLogAvecVersions.Select(l => l.listVersions).FirstOrDefault().OrderBy(v => v.Num).ToList();
         }
     }
 }

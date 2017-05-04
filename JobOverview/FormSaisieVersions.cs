@@ -30,12 +30,11 @@ namespace JobOverview
         protected override void OnClosing(CancelEventArgs e)
         {
             // On crée une nouvelle version à partir des données saisies par l'utilisateur,
-            // à condition que les champs Numéro et Millésime soient renseignés, et qu'il clique sur OK.
-            if (this.DialogResult == DialogResult.OK)
+            // à condition que les champs soient bien renseignés (sauf la date de sortie réelle qui est facultative), et qu'il clique sur OK.
+            if (this.DialogResult == DialogResult.OK && !string.IsNullOrEmpty(mtbNumVersion.Text) && !string.IsNullOrEmpty(mtbMillésime.Text))
             {
-                if (!string.IsNullOrEmpty(mtbNumVersion.Text))
-                    versionSaisie.Num = float.Parse(mtbNumVersion.Text);
-                if (!string.IsNullOrEmpty(mtbMillésime.Text))
+                versionSaisie = new Version();
+                versionSaisie.Num = float.Parse(mtbNumVersion.Text);
                     versionSaisie.Millesime = short.Parse(mtbMillésime.Text);
             }
             base.OnClosing(e);
@@ -43,7 +42,7 @@ namespace JobOverview
 
         protected override void OnLoad(EventArgs e)
         {
-            versionSaisie = new Version();
+            // versionSaisie = new Version();
 
             base.OnLoad(e);
         }
