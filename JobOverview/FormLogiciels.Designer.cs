@@ -32,7 +32,12 @@
             this.dgvModules = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgvVersions = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnPlus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVersions)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbLogiciels
@@ -73,11 +78,55 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Liste des modules";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label3.Location = new System.Drawing.Point(9, 299);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 14);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Liste des versions";
+            // 
+            // dgvVersions
+            // 
+            this.dgvVersions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVersions.Location = new System.Drawing.Point(12, 327);
+            this.dgvVersions.Name = "dgvVersions";
+            this.dgvVersions.Size = new System.Drawing.Size(219, 105);
+            this.dgvVersions.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label4.Location = new System.Drawing.Point(290, 299);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(220, 14);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Ajout / Suppression d\'une version";
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(329, 327);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(46, 37);
+            this.btnPlus.TabIndex = 4;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            // 
             // FormLogiciels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 402);
+            this.ClientSize = new System.Drawing.Size(547, 454);
+            this.Controls.Add(this.btnPlus);
+            this.Controls.Add(this.dgvVersions);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvModules);
@@ -85,6 +134,7 @@
             this.Name = "FormLogiciels";
             this.Text = "Gestion - Versions logiciels";
             ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVersions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +146,9 @@
         private System.Windows.Forms.DataGridView dgvModules;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvVersions;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnPlus;
     }
 }

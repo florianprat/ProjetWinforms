@@ -9,3 +9,4 @@ D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.Properties.Re
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.csproj.GenerateResource.Cache
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.exe
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.pdb
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.FormSaisieVersions.resources
