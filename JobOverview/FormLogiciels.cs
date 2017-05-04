@@ -40,6 +40,11 @@ namespace JobOverview
             dgvModules.DataSource = null;
             dgvVersions.DataSource = null;
 
+            // La zone liée à l'ajout et suppression d'une version est invisible tant qu'un logiciel n'est pas sélectionné.
+            lblAjoutSupprVersion.Visible = false;
+            btnPlus.Visible = false;
+            btnMoins.Visible = false;
+
             base.OnLoad(e);
         }
 
@@ -48,16 +53,17 @@ namespace JobOverview
         // Les versions sont affichées par ordre numérique, avec le numéro de la dernière release.
         private void CmbLogiciels_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Affichage de la zone d'ajout et suppression de version
+            lblAjoutSupprVersion.Visible = true;
+            btnPlus.Visible = true;
+            btnMoins.Visible = true;
+
             // Affichage des modules
             dgvModules.DataSource = _listLogAvecModules.Select(l => l.listModules).FirstOrDefault().OrderBy(m => m.Code).ToList();
 
             // Affichage des versions (les colonnes inutiles sont masquées).
             dgvVersions.DataSource = _listLogAvecVersions.Select(l => l.listVersions).FirstOrDefault().OrderBy(v => v.Num).ToList();
             dgvVersions.Columns["CodeLog"].Visible = false;
-            dgvVersions.Columns["Millesime"].Visible = false;
-            dgvVersions.Columns["DateOuverture"].Visible = false;
-            dgvVersions.Columns["DateSortiePrévue"].Visible = false;
-            dgvVersions.Columns["DateSortieRéelle"].Visible = false;
         }
 
         // Clic sur le bouton "Plus"
@@ -73,8 +79,11 @@ namespace JobOverview
 
                 if (dr == DialogResult.OK)
                 {
-                    form.versionSaisie.CodeLog = (string)cmbLogiciels.SelectedValue;
-                    DALLogiciels.AjouterVersion(form.versionSaisie);
+                    if (form.versionSaisie != null)
+                    {
+                        form.versionSaisie.CodeLog = (string)cmbLogiciels.SelectedValue;
+                        DALLogiciels.AjouterVersion(form.versionSaisie);
+                    }
 
                     // Rafraîchissement de la liste affichée des versions
                     // Effectuer ce rafraîchissement via une BindingList serait peut-être plus adapté.

@@ -100,14 +100,16 @@ namespace JobOverview
             var connectString = Properties.Settings.Default.JobOverviewConnectionString;
 
             //Ecriture de la requête
-            string req = @"select L.CodeLogiciel, L.Nom, V.NumeroVersion, max(R.NumeroRelease) [Dernière release]
+            string req = @"select L.CodeLogiciel, L.Nom, V.NumeroVersion, V.Millesime, max(R.NumeroRelease) [Dernière release],
+		                            V.DateOuverture, V.DateSortiePrevue, V.DateSortieReelle
                             from jo.Logiciel L
-                            left outer join jo.Version V on L.CodeLogiciel = V.CodeLogiciel
+                            inner join jo.Version V on L.CodeLogiciel = V.CodeLogiciel
                             left outer join jo.Release R on R.NumeroVersion = V.NumeroVersion
-                            left outer join jo.Filiere F on L.CodeFiliere = F.CodeFiliere
-                            left outer join jo.Equipe E on F.CodeFiliere = E.CodeFiliere
+                            inner join jo.Filiere F on L.CodeFiliere = F.CodeFiliere
+                            inner join jo.Equipe E on F.CodeFiliere = E.CodeFiliere
                             where F.CodeFiliere = 'BIOH' and E.CodeEquipe = 'BIOH_DEV'
-                            group by L.CodeLogiciel, L.Nom, V.NumeroVersion ";
+                            group by L.CodeLogiciel, L.Nom, V.NumeroVersion, V.Millesime, V.DateOuverture,
+                                    V.DateSortiePrevue, V.DateSortieReelle";
 
             // Création d'une connexion à partir de la chaîne de connexion stockée juste avant
             using (var cnx = new SqlConnection(connectString))
@@ -152,8 +154,14 @@ namespace JobOverview
             // On remplit la liste des versions associée au logiciel courant.
             Version ver = new Version();
             ver.Num = (float)reader["NumeroVersion"];
-            if (reader["Dernière release"] != DBNull.Value)         // Permet de gérer le cas où il n'y a pas de release (arrive quand on crée une version).
+            ver.Millesime = (short)reader["Millesime"];
+            if (reader["Dernière release"] != DBNull.Value)         // Permet de gérer le cas où il n'y a pas de release (cela arrive quand on crée une version).
                 ver.DernièreRelease = (short)reader["Dernière release"];
+            ver.DateOuverture = (DateTime)reader["DateOuverture"];
+            ver.DateSortiePrévue = (DateTime)reader["DateSortiePrevue"];
+            if (reader["DateSortieReelle"] != DBNull.Value)
+                ver.DateSortieRéelle = (DateTime)reader["DateSortieReelle"];
+                
             log.listVersions.Add(ver);
         }
 
@@ -179,7 +187,10 @@ namespace JobOverview
             var paramDateSortiePrévue = new SqlParameter("@dateSortiePrévue", DbType.DateTime);
             paramDateSortiePrévue.Value = ver.DateSortiePrévue;
             var paramDateSortieRéelle = new SqlParameter("@dateSortieRéelle", DbType.DateTime);
-            paramDateSortieRéelle.Value = ver.DateSortieRéelle;
+            // Il faut gérer ici le fait que la date de sortie réelle est facultative.
+            if (ver.DateSortieRéelle != null)
+                paramDateSortieRéelle.Value = ver.DateSortieRéelle;
+            else paramDateSortieRéelle.Value = DBNull.Value;
 
             // Création d'une connexion à partir de la chaîne de connexion stockée juste avant
             using (var cnx = new SqlConnection(connectString))
