@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbNumVersion = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbMillésime = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.dtpDateOuverture = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateSortiePrévue = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateSortieRéelle = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // maskedTextBox1
+            // mtbNumVersion
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(163, 22);
-            this.maskedTextBox1.Mask = "99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 0;
+            this.mtbNumVersion.Location = new System.Drawing.Point(163, 22);
+            this.mtbNumVersion.Mask = "99";
+            this.mtbNumVersion.Name = "mtbNumVersion";
+            this.mtbNumVersion.Size = new System.Drawing.Size(100, 20);
+            this.mtbNumVersion.TabIndex = 1;
             // 
             // label1
             // 
@@ -72,13 +72,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Millésime";
             // 
-            // maskedTextBox2
+            // mtbMillésime
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(163, 64);
-            this.maskedTextBox2.Mask = "9999";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 0;
+            this.mtbMillésime.Location = new System.Drawing.Point(163, 64);
+            this.mtbMillésime.Mask = "9999";
+            this.mtbMillésime.Name = "mtbMillésime";
+            this.mtbMillésime.Size = new System.Drawing.Size(100, 20);
+            this.mtbMillésime.TabIndex = 2;
             // 
             // label3
             // 
@@ -91,15 +91,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Date d\'ouverture";
             // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(163, 106);
-            this.maskedTextBox3.Mask = "00/00/0000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox3.TabIndex = 0;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -111,34 +102,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Date de sortie prévue";
             // 
-            // maskedTextBox4
-            // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(163, 145);
-            this.maskedTextBox4.Mask = "00/00/0000";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox4.TabIndex = 0;
-            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(66, 183);
+            this.label5.Location = new System.Drawing.Point(30, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 28);
+            this.label5.Size = new System.Drawing.Size(127, 28);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Date de sortie\r\n(facultatif)";
-            // 
-            // maskedTextBox5
-            // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(163, 181);
-            this.maskedTextBox5.Mask = "00/00/0000";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox5.TabIndex = 0;
-            this.maskedTextBox5.ValidatingType = typeof(System.DateTime);
+            this.label5.Text = "Date de sortie réelle\r\n(facultatif)";
             // 
             // btnOK
             // 
@@ -147,19 +120,42 @@
             this.btnOK.Location = new System.Drawing.Point(147, 249);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(77, 28);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnuler.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.Location = new System.Drawing.Point(239, 249);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(77, 28);
-            this.btnAnnuler.TabIndex = 4;
+            this.btnAnnuler.TabIndex = 7;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            // 
+            // dtpDateOuverture
+            // 
+            this.dtpDateOuverture.Location = new System.Drawing.Point(163, 103);
+            this.dtpDateOuverture.Name = "dtpDateOuverture";
+            this.dtpDateOuverture.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateOuverture.TabIndex = 8;
+            this.dtpDateOuverture.Value = new System.DateTime(2017, 1, 25, 0, 0, 0, 0);
+            // 
+            // dtpDateSortiePrévue
+            // 
+            this.dtpDateSortiePrévue.Location = new System.Drawing.Point(163, 142);
+            this.dtpDateSortiePrévue.Name = "dtpDateSortiePrévue";
+            this.dtpDateSortiePrévue.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateSortiePrévue.TabIndex = 8;
+            // 
+            // dtpDateSortieRéelle
+            // 
+            this.dtpDateSortieRéelle.Location = new System.Drawing.Point(163, 178);
+            this.dtpDateSortieRéelle.Name = "dtpDateSortieRéelle";
+            this.dtpDateSortieRéelle.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateSortieRéelle.TabIndex = 8;
             // 
             // FormSaisieVersions
             // 
@@ -167,8 +163,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAnnuler;
-            this.ClientSize = new System.Drawing.Size(357, 300);
+            this.ClientSize = new System.Drawing.Size(406, 312);
             this.ControlBox = false;
+            this.Controls.Add(this.dtpDateSortieRéelle);
+            this.Controls.Add(this.dtpDateSortiePrévue);
+            this.Controls.Add(this.dtpDateOuverture);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label2);
@@ -176,11 +175,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.maskedTextBox5);
-            this.Controls.Add(this.maskedTextBox4);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.mtbMillésime);
+            this.Controls.Add(this.mtbNumVersion);
             this.Name = "FormSaisieVersions";
             this.Text = "Saisie d\'une nouvelle version";
             this.ResumeLayout(false);
@@ -190,17 +186,17 @@
 
         #endregion
 
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbNumVersion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox mtbMillésime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.DateTimePicker dtpDateOuverture;
+        private System.Windows.Forms.DateTimePicker dtpDateSortiePrévue;
+        private System.Windows.Forms.DateTimePicker dtpDateSortieRéelle;
     }
 }

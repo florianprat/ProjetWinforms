@@ -154,6 +154,8 @@ namespace JobOverview
             log.listVersions.Add(ver);
         }
 
+        // Ajout d'une version dans la base de données
+        //public 
 
 
 
