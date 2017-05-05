@@ -10,3 +10,4 @@ D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.csproj.Genera
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.exe
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.pdb
 D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.FormSaisieVersions.resources
+D:\ProjetWinforms\ProjetWinforms\JobOverview\obj\Debug\JobOverview.FormImportProd.resources

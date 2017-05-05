@@ -18,6 +18,8 @@ namespace JobOverview
 
             // Branchement du menu associé à la gestion des versions de logiciels
             mnuLogiciels.Click += (object sender, EventArgs e) => ShowChild("JobOverview.FormLogiciels");
+            // Branchement du menu associé à l'importation de tâches de production
+            mnuImportProd.Click += (object sender, EventArgs e) => ShowChild("JobOverview.FormImportProd");
         }
 
         // Affichage d'une fenêtre fille
