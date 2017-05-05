@@ -1,0 +1,2 @@
+Pour utiliser une nouvelle chaîne de connexion, modifier l'attribut connectionString par la chaîne de connexion souhaitée 
+dans le fichier "JobOverview.exe.config" fourni avec l'exécutable de l'application.
