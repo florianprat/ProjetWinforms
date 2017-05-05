@@ -20,7 +20,6 @@ namespace JobOverview
             {
                 listTravaux = (List<Tâche>)deserializer.Deserialize(sr);
             }
-
             return listTravaux;
         }
     }
