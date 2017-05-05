@@ -11,7 +11,7 @@ namespace JobOverview
     public class DALTâcheProd
     {
         // Désérialisation du fichier XML sélectionné par l'utilisateur
-        public static List<Tâche> ImporterFichierXml (string cheminFichier)
+        public static List<Tâche> ImporterFichierXml(string cheminFichier)
         {
             List<Tâche> listTravaux = null;
             XmlSerializer deserializer = new XmlSerializer(typeof(List<Tâche>), new XmlRootAttribute("TachesProduction"));
@@ -24,5 +24,5 @@ namespace JobOverview
         }
     }
 
-    }
 }
+
