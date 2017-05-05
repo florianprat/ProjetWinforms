@@ -47,7 +47,7 @@ namespace JobOverview
             // On vérifie que le fichier est au format .xml. Si oui, la désérialisation est lancée.
             // Dans le cas contraire, l'utilisateur est averti.
             if (!_nomFichierSelect.ToLower().Contains(".xml"))
-                MessageBox.Show("Chargement impossible : le fichier sélectionné n'est pas au format XML.");
+                MessageBox.Show("Chargement impossible : le fichier sélectionné n'est pas au format XML.", "Message d'erreur");
             //else ---> TODO : décoration des classes impliquées
             
         }

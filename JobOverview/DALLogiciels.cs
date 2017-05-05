@@ -161,7 +161,7 @@ namespace JobOverview
             ver.DateSortiePrévue = (DateTime)reader["DateSortiePrevue"];
             if (reader["DateSortieReelle"] != DBNull.Value)
                 ver.DateSortieRéelle = (DateTime)reader["DateSortieReelle"];
-                
+
             log.listVersions.Add(ver);
         }
 
@@ -228,14 +228,30 @@ namespace JobOverview
 
             using (var connect = new SqlConnection(connectString))
             {
+                // Ouverture de la connexion et exécution de la commande
+                connect.Open();
+
+                // Utilisation d'une transaction
+                SqlTransaction tran = connect.BeginTransaction();
+
                 // Création de la commande avec paramètres
-                var command = new SqlCommand(req, connect);
+                var command = new SqlCommand(req, connect, tran);
                 command.Parameters.Add(paramNum);
                 command.Parameters.Add(paramCodeLog);
 
-                // Ouverture de la connexion et exécution de la commande
-                connect.Open();
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    // Validation de la transaction si tout se passe bien.
+                    tran.Commit();
+                }
+                catch (SqlException ex)
+                {
+                    // Annulation de la transaction
+                    tran.Rollback();
+                    // On lève une erreur avec un message explicite
+                    throw new Exception("Suppression impossible : la version sélectionnée est associée à une ou des releases.", ex);
+                }
             }
         }
 

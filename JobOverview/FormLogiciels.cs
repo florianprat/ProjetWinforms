@@ -114,10 +114,10 @@ namespace JobOverview
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Message d'erreur");
                 }
             else
-                MessageBox.Show("Suppression impossible : la version sélectionnée est associée à des tâches de production.");
+                MessageBox.Show("Suppression impossible : la version sélectionnée est associée à une ou des tâches de production.","Message d'erreur");
 
             // Rafraîchissement de la liste affichée des versions
             // Effectuer ce rafraîchissement via une BindingList serait peut-être plus adapté.

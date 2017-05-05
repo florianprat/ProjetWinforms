@@ -30,7 +30,7 @@ namespace JobOverview
             {
                 _vérifDateOuverture = true;
                 _dateOuverture = dtpDateOuverture.Value;
-                
+
                 // La date minimale de sortie prévue autorisée est indexée sur la date d'ouverture (la sortie ne peut pas précéder la sortie).
                 // Attention : quand on assigne une date min à la DateTimePicker de date de sortie prévue, _vérifDateSortiePrévue passe true.
                 if (_vérifDateSortiePrévue)
@@ -69,7 +69,7 @@ namespace JobOverview
                 var list = DALLogiciels.GetLogicielsAvecVersions().Select(l => l.listVersions).FirstOrDefault();
                 if (list.Exists(v => v.Num == short.Parse(mtbNumVersion.Text)))
                 {
-                    MessageBox.Show("Attention : le numéro de version doit être unique.");
+                    MessageBox.Show("Attention : le numéro de version doit être unique.", "Message d'erreur");
                     e.Cancel = true;
                 }
 
@@ -88,11 +88,11 @@ namespace JobOverview
             if (this.DialogResult == DialogResult.OK && !validitéSaisie)
             {
                 e.Cancel = true;
-                MessageBox.Show("La saisie est incomplète. Les champs numéro, millésime, date d'ouverture et date de sortie prévue sont obligatoires.");
+                MessageBox.Show("La saisie est incomplète. Les champs numéro, millésime, date d'ouverture et date de sortie prévue sont obligatoires.", "Message d'erreur");
             }
 
-                base.OnClosing(e);
-            }
+            base.OnClosing(e);
+        }
 
         protected override void OnLoad(EventArgs e)
         {

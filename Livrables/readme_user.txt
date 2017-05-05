@@ -33,8 +33,8 @@ Suite à la sélection d'un logiciel, une zone dédiée à l'ajout/suppression de ver
 
 Pour supprimer une version, sélectionnez cette dernière dans la zone "Liste des versions" et 
 cliquez sur le bouton "-". Suite à cette action, la version sélectionnée est supprimée de la 
-base de données. Une version peut être supprimée si elle n'est liée à aucune tâche de production. 
-Dans le cas contraire, un message d'alerte est affiché.
+base de données. Une version peut être supprimée si elle n'est liée à aucune tâche de production 
+et à aucune release. Dans le cas contraire, un message d'alerte est affiché.
 
 Pour ajouter une version, cliquez sur le bouton "+" dans la zone "Liste des versions". Une fenêtre 
 modale de saisie apparaît (fenêtre "Saisie d'une nouvelle version"). Après saisie, cliquez sur le 
