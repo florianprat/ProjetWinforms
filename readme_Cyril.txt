@@ -12,3 +12,6 @@ Dans le dossier "Livrables", tu trouveras :
    - le fichier de configuration associé, notamment utile pour changer la chaîne de connexion à la base de données.
    - une documentation succincte à destination de l'utilisateur (la documentation concernera les éléments avancés).
    - une documentation technique à destination d'un développeur.
+   - (une sauvegarde de la base de données --> pour le moment, elle est identique à celle fournie)
+
+Enfin, tu trouveras des commentaires dans la solution Visual Studio.
