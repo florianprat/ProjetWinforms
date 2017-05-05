@@ -28,13 +28,18 @@ namespace JobOverview
             // La saisie ou non des champs de date est contrôlée à l'aide de booléens.
             dtpDateOuverture.ValueChanged += (object sender, EventArgs e) =>
             {
-                // La date minimal de sortie prévue autorisée est indexée sur la date d'ouverture.
-                dtpDateSortiePrévue.MinDate = _dateOuverture;
-                // On maintient _vérifDateSortiePrévue false si tel est le cas.
-                // (Quand on assigne une date min à la DateTimePicker de date de sortie prévue, _vérifDateSortiePrévue passe true).
-                if (!_vérifDateSortiePrévue) _vérifDateSortiePrévue = false;
                 _vérifDateOuverture = true;
                 _dateOuverture = dtpDateOuverture.Value;
+                
+                // La date minimale de sortie prévue autorisée est indexée sur la date d'ouverture (la sortie ne peut pas précéder la sortie).
+                // Attention : quand on assigne une date min à la DateTimePicker de date de sortie prévue, _vérifDateSortiePrévue passe true.
+                if (_vérifDateSortiePrévue)
+                    dtpDateSortiePrévue.MinDate = _dateOuverture;
+                else
+                {
+                    dtpDateSortiePrévue.MinDate = _dateOuverture;
+                    _vérifDateSortiePrévue = false;
+                }
             };
             dtpDateSortiePrévue.ValueChanged += (object sender, EventArgs e) =>
             {

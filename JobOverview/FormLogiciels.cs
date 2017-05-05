@@ -101,7 +101,12 @@ namespace JobOverview
             float numVersionASupprimer = ((Version)dgvVersions.CurrentRow.DataBoundItem).Num;
             string codeLog = (string)cmbLogiciels.SelectedValue;
 
-            DALLogiciels.SupprimerVersion(numVersionASupprimer, codeLog);
+            // La version du logiciel est supprimée si elle n'est associée à aucune tâche de production.
+            int nbTâches = DALLogiciels.CompterTâchesProd(numVersionASupprimer, codeLog);
+            if (nbTâches == 0)
+                DALLogiciels.SupprimerVersion(numVersionASupprimer, codeLog);
+            else
+                MessageBox.Show("Suppression impossible : la version sélectionnée est associée à des tâches de production.");
 
             // Rafraîchissement de la liste affichée des versions
             // Effectuer ce rafraîchissement via une BindingList serait peut-être plus adapté.

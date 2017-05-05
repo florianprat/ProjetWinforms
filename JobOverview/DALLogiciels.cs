@@ -238,5 +238,46 @@ namespace JobOverview
                 command.ExecuteNonQuery();
             }
         }
+
+        // Récupération du nombre de tâches de production associées à une version de logiciel données.
+        // La requête exécutée dans la méthode permet de vérifier si la version est associée ou non à des tâches de production.
+        // Si à la version ne correspond aucune tâche de production, la version pourra être supprimée.
+        public static int CompterTâchesProd(float numVersion, string codeLog)
+        {
+            // Nombre de tâches de production à retourner
+            int compteurTaches;
+
+            // Récupération de la chaîne de connexion
+            var connectString = Properties.Settings.Default.JobOverviewConnectionString;
+
+            //Ecriture de la requête (pas outer join dans la requête mais inner, pour ne pas prendre en compte les versions sans tâches de production)
+            string req = @"select COUNT(*)
+                            from jo.Version V
+                            inner join jo.TacheProd T on T.CodeLogicielVersion = V.NumeroVersion
+                            where V.NumeroVersion = @num and V.CodeLogiciel = @codeLog";
+
+            // Paramètres de la requête
+            var paramNum = new SqlParameter("@num", DbType.Double);
+            paramNum.Value = numVersion;
+            var paramCodeLog = new SqlParameter("@codeLog", DbType.String);
+            paramCodeLog.Value = codeLog;
+
+            // Création d'une connexion à partir de la chaîne de connexion stockée juste avant
+            using (var cnx = new SqlConnection(connectString))
+            {
+                // Création d'une commande à partir de la requête et de la connexion
+                // et entrée des paramètres.
+                var command = new SqlCommand(req, cnx);
+                command.Parameters.Add(paramNum);
+                command.Parameters.Add(paramCodeLog);
+
+                // Ouverture de la connection et exécution de la commande
+                cnx.Open();
+                compteurTaches = (int)command.ExecuteScalar();
+            }
+
+            // Retour du nombre de tâches de production
+            return compteurTaches;
+        }
     }
 }
