@@ -144,7 +144,7 @@
             this.Controls.Add(this.dgvModules);
             this.Controls.Add(this.cmbLogiciels);
             this.Name = "FormLogiciels";
-            this.Text = "Gestion - Versions logiciels";
+            this.Text = "Gestion - Versions de logiciels";
             ((System.ComponentModel.ISupportInitialize)(this.dgvModules)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVersions)).EndInit();
             this.ResumeLayout(false);

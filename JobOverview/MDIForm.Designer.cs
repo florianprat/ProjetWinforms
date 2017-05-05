@@ -31,13 +31,13 @@
             this.menuGeneral = new System.Windows.Forms.MenuStrip();
             this.mnuLogiciels = new System.Windows.Forms.ToolStripMenuItem();
             this.menu2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.tâchesDeProductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tâchesAnnexesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saisiesDeTempsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.echangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImportProd = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExportProd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWindows = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,12 +70,6 @@
             this.menu2.Size = new System.Drawing.Size(55, 20);
             this.menu2.Text = "Tâches";
             // 
-            // menuWindows
-            // 
-            this.menuWindows.Name = "menuWindows";
-            this.menuWindows.Size = new System.Drawing.Size(63, 20);
-            this.menuWindows.Text = "Fenêtres";
-            // 
             // tâchesDeProductionToolStripMenuItem
             // 
             this.tâchesDeProductionToolStripMenuItem.Name = "tâchesDeProductionToolStripMenuItem";
@@ -97,23 +91,29 @@
             // echangesToolStripMenuItem
             // 
             this.echangesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importationToolStripMenuItem,
-            this.exportationToolStripMenuItem});
+            this.mnuImportProd,
+            this.mnuExportProd});
             this.echangesToolStripMenuItem.Name = "echangesToolStripMenuItem";
             this.echangesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.echangesToolStripMenuItem.Text = "Echanges";
             // 
-            // importationToolStripMenuItem
+            // mnuImportProd
             // 
-            this.importationToolStripMenuItem.Name = "importationToolStripMenuItem";
-            this.importationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importationToolStripMenuItem.Text = "Importation";
+            this.mnuImportProd.Name = "mnuImportProd";
+            this.mnuImportProd.Size = new System.Drawing.Size(252, 22);
+            this.mnuImportProd.Text = "Importation tâches de production";
             // 
-            // exportationToolStripMenuItem
+            // mnuExportProd
             // 
-            this.exportationToolStripMenuItem.Name = "exportationToolStripMenuItem";
-            this.exportationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportationToolStripMenuItem.Text = "Exportation";
+            this.mnuExportProd.Name = "mnuExportProd";
+            this.mnuExportProd.Size = new System.Drawing.Size(252, 22);
+            this.mnuExportProd.Text = "Exportation tâches de production";
+            // 
+            // menuWindows
+            // 
+            this.menuWindows.Name = "menuWindows";
+            this.menuWindows.Size = new System.Drawing.Size(63, 20);
+            this.menuWindows.Text = "Fenêtres";
             // 
             // MDIForm
             // 
@@ -142,8 +142,8 @@
         private System.Windows.Forms.ToolStripMenuItem tâchesAnnexesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saisiesDeTempsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem echangesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuImportProd;
+        private System.Windows.Forms.ToolStripMenuItem mnuExportProd;
     }
 }
 
