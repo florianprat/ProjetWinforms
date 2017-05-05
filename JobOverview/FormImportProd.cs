@@ -49,7 +49,6 @@ namespace JobOverview
             if (!_nomFichierSelect.ToLower().Contains(".xml"))
                 MessageBox.Show("Chargement impossible : le fichier sélectionné n'est pas au format XML.");
             //else ---> implémenter la désérialisation
-                    
         }
     }
 }
