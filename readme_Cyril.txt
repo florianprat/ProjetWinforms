@@ -8,8 +8,8 @@ Tu trouveras ci-après un récapitulatif de l'état d'avancement par module :
    - Echanges de données : la désérialisation est en cours et la sérialisation n'a pas encore été abordée.
 
 Dans le dossier "Livrables", tu trouveras :
-   - l'exécutable du projet
-   - le fichier de configuration associé, notamment utile pour changer la chaîne de connexion à la base de données.
+   - l'exécutable du projet (fichier "JobOverview.exe")
+   - le fichier de configuration associé (fichier "JobOverview.exe.config"), notamment utile pour changer la chaîne de connexion à la base de données.
    - une documentation succincte à destination de l'utilisateur (la documentation concernera les éléments avancés).
    - une documentation technique à destination d'un développeur.
    - (une sauvegarde de la base de données --> pour le moment, elle est identique à celle fournie)
