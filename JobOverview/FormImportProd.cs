@@ -14,6 +14,7 @@ namespace JobOverview
     {
         private string _nomFichierSelect;
         private string _cheminFichier;
+
         public FormImportProd()
         {
             InitializeComponent();
@@ -39,7 +40,6 @@ namespace JobOverview
                 _cheminFichier = fd.FileName;
             }
             tbCheminFichier.Text = _cheminFichier;
-            
         }
 
         // Lancement du chargement des données, c'est-à-dire de la désérialisation du fichier sélectionné.
@@ -49,10 +49,13 @@ namespace JobOverview
 
             // On vérifie que le fichier est au format .xml. Si oui, la désérialisation est lancée.
             // Dans le cas contraire, l'utilisateur est averti.
+            /*
+             *      /!\ Le processus de désérialisation n'est pas terminé
+             */
             if (!_nomFichierSelect.ToLower().Contains(".xml"))
                 MessageBox.Show("Chargement impossible : le fichier sélectionné n'est pas au format XML.", "Message d'erreur");
             else
-                list = DALTâcheProd.ImporterFichierXml(_cheminFichier);
+                list = DALTâche.ImporterFichierXml(_cheminFichier);
         }
     }
 }

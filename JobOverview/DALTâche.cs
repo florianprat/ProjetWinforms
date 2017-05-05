@@ -8,7 +8,11 @@ using System.Xml.Serialization;
 
 namespace JobOverview
 {
-    public class DALTâcheProd
+    /*****************************************************
+     * DAL associée à la gestion des tâches
+     *****************************************************/
+
+    public class DALTâche
     {
         // Désérialisation du fichier XML sélectionné par l'utilisateur
         public static List<Tâche> ImporterFichierXml(string cheminFichier)

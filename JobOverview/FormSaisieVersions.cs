@@ -14,6 +14,7 @@ namespace JobOverview
     {
         // Cette propriété permet de récupérer la version saisie après la fermeture de la fenêtre.
         public Version versionSaisie { get; private set; }
+
         private bool _vérifDateOuverture = false;
         private bool _vérifDateSortiePrévue = false;
         private bool _vérifDateSortieRéelle = false;
@@ -92,13 +93,6 @@ namespace JobOverview
             }
 
             base.OnClosing(e);
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            // versionSaisie = new Version();
-
-            base.OnLoad(e);
         }
     }
 }

@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALLogiciels.cs" />
-    <Compile Include="DALTâcheProd.cs" />
+    <Compile Include="DALTâche.cs" />
     <Compile Include="FormImportProd.cs">
       <SubType>Form</SubType>
     </Compile>
